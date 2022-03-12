@@ -8,6 +8,11 @@ const Header = {
       const searchKeyword = document.getElementById('q').value;
       document.location.hash = `/?q=${searchKeyword}`;
     });
+    document
+      .getElementById('aside-open-button')
+      .addEventListener('click', async () => {
+        document.getElementById('aside-container').classList.add('open');
+      });
   },
 
   render: () => {
@@ -15,7 +20,8 @@ const Header = {
     const { value } = parseRequestUrl();
     return `
         <div class="brand">
-            <a href="/#/">Amazona</a>
+          <button id="aside-open-button">&#9776;</button>
+          <a href="/#/">Amazona</a>
         </div>
         <div class="search">
           <form class="search-form" id="search-form">
