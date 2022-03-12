@@ -77,17 +77,17 @@ const OrderScreen = {
   after_render: () => {
     const request = parseRequestUrl();
     // eslint-disable-next-line no-unused-expressions
-    document.getElementById('deliver-order-button')
-      ? document
-          .getElementById('deliver-order-button')
-          .addEventListener('click', async () => {
-            showLoading();
-            await deliverOrder(request.id);
-            hideLoading();
-            showMessage('Order delivered');
-            rerender(OrderScreen);
-          })
-      : null;
+    if (document.getElementById('deliver-order-button')) {
+      document
+        .getElementById('deliver-order-button')
+        .addEventListener('click', async () => {
+          showLoading();
+          await deliverOrder(request.id);
+          hideLoading();
+          showMessage('Order delivered');
+          rerender(OrderScreen);
+        });
+    }
   },
   render: async () => {
     const { isAdmin } = getUserInfo();
