@@ -53,7 +53,7 @@ app.use((err, req, res, next) => {
 });
 
 //////////// Seeder //////////////
-importData();
+// importData();
 //////////////////////////////////
 
 app.listen(config.PORT, () => {
