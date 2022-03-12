@@ -8,7 +8,6 @@ const HomeScreen = {
     const { value } = parseRequestUrl();
     showLoading();
     const products = await getProducts({ searchKeyword: value });
-    console.log(products);
     if (products.error) {
       return `<div class="error">${products.error}</div>`;
     }

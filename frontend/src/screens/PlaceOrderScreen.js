@@ -51,7 +51,6 @@ const PlaceOrderScreen = {
         showLoading();
         const data = await createOrder(order);
         hideLoading();
-        console.log(data);
         if (data.error) {
           showMessage(data.error);
         } else {
