@@ -1,4 +1,17 @@
 export default {
+  users: [
+    {
+      name: 'admin',
+      email: 'admin@example.com',
+      password: 'test1234',
+      isAdmin: true,
+    },
+    {
+      name: 'hassan',
+      email: 'hassan@example.com',
+      password: 'test1234',
+    },
+  ],
   products: [
     {
       // _id: '111111111111111111111111',
