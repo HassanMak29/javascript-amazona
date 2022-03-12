@@ -1,12 +1,13 @@
 /* eslint-disable indent */
 import { getProducts } from '../api';
 import Rating from '../components/Rating';
-import { hideLoading, showLoading } from '../utils';
+import { hideLoading, parseRequestUrl, showLoading } from '../utils';
 
 const HomeScreen = {
   render: async () => {
+    const { value } = parseRequestUrl();
     showLoading();
-    const products = await getProducts();
+    const products = await getProducts({ searchKeyword: value });
     hideLoading();
     if (products.error) {
       return `<div class="error">${products.error}</div>`;
