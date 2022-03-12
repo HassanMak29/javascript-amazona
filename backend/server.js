@@ -57,5 +57,5 @@ app.use((err, req, res, next) => {
 //////////////////////////////////
 
 app.listen(config.PORT, () => {
-  console.log(`Serve at http://localhost:${port}`);
+  console.log(`Serve at http://localhost:${config.PORT}`);
 });
