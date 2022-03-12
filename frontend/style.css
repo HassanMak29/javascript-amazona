@@ -26,6 +26,8 @@ button {
 }
 
 input,
+select,
+textarea,
 button {
   font: 1.6rem 'Halvatica';
   padding: 1rem;
@@ -659,4 +661,15 @@ ul.categories {
   border: none;
   color: #fff;
   cursor: pointer;
+}
+
+/* Review */
+.review {
+  list-style: none;
+  padding: 0;
+}
+
+.review li {
+  margin-bottom: 1rem;
+  padding-bottom: 1rem;
 }
