@@ -9,7 +9,7 @@ import userRouter from './routers/userRouter';
 import orderRouter from './routers/orderRouter';
 import productRouter from './routers/productRouter';
 import uploadRouter from './routers/uploadRouter';
-import { importData } from './seeder';
+// import { importData } from './seeder';
 
 mongoose
   .connect(config.MONGODB_URL)
