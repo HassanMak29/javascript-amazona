@@ -93,7 +93,11 @@ const ProductScreen = {
                     }
                   </li>
                   <li>
-                    <button id="add-button" class="fw primary">Add to Cart</button>
+                  ${
+                    product.countInStock
+                      ? `<button id="add-button" class="fw primary">Add to Cart</button>`
+                      : ''
+                  }
                   </li>
                 </ul>
           </div>
