@@ -52,7 +52,7 @@ const DashboardScreen = {
                             <span><i class="fa fa-users"></i> Orders</span>
                         </div>
                         <div class="summary-body">${
-                          summary.orders[0].numOrders
+                          summary.orders[0].numOrders || 0
                         }</div>
                     </li>
                     <li>
