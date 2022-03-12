@@ -12,9 +12,11 @@ import { getUserInfo } from '../localStorage';
 const ProductScreen = {
   after_render: () => {
     const request = parseRequestUrl();
-    document.getElementById('add-button').addEventListener('click', () => {
-      document.location.hash = `/cart/${request.id}`;
-    });
+    if (document.getElementById('add-button')) {
+      document.getElementById('add-button').addEventListener('click', () => {
+        document.location.hash = `/cart/${request.id}`;
+      });
+    }
 
     if (document.getElementById('review-form')) {
       document
