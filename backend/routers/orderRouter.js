@@ -13,6 +13,7 @@ orderRouter.get(
   isAdmin,
   expressAsyncHandler(async (req, res) => {
     const orders = await Order.aggregate([
+      { $match: { isPaid: true } },
       {
         $group: {
           _id: null,
