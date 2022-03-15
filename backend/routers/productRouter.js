@@ -1,7 +1,9 @@
 import express from 'express';
+import mongoose from 'mongoose';
 import expressAsyncHandler from 'express-async-handler';
 import { isAuth, isAdmin } from '../utils';
 import Product from '../models/productModel';
+import Order from '../models/orderModel';
 
 const productRouter = express.Router();
 
@@ -117,7 +119,35 @@ productRouter.post(
         product.reviews.reduce((acc, cur) => cur.rating + acc, 0) /
         product.reviews.length;
       product.numReviews = product.reviews.length;
-      const updatedProduct = await product.save();
+
+      const orders = await Order.aggregate([
+        { $match: { user: mongoose.Types.ObjectId(req.user._id) } },
+        { $unwind: '$orderItems' },
+        {
+          $match: {
+            'orderItems.product': mongoose.Types.ObjectId(req.params.id),
+          },
+        },
+      ]);
+
+      let updatedProduct;
+      if (orders.length !== 0) {
+        updatedProduct = await product.save();
+      } else {
+        throw new Error('You must buy the product to be able to review it!');
+      }
+
+      const reviews = await Product.aggregate([
+        {
+          $match: {
+            'reviews.user': mongoose.Types.ObjectId(req.user._id),
+          },
+        },
+      ]);
+
+      if (reviews.length !== 0) {
+        throw new Error('You already reviewed this product!');
+      }
 
       res.status(201).send({
         message: 'Comment Created',
